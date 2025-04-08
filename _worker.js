@@ -3002,7 +3002,7 @@ be.prototype.constructor = be;
 be.prototype.toString = function(r) {
   return this.name + ": " + Et(this, r);
 };
-var R = be;
+var T = be;
 function Be(e, r, t, i, n) {
   var o = "", s = "", a = Math.floor(n / 2) - 1;
   return i - r > a && (o = " ... ", r = i - a + o.length), t - i > a && (s = " ...", t = i + a - s.length), {
@@ -3070,13 +3070,13 @@ function jr(e) {
 function $r(e, r) {
   if (r = r || {}, Object.keys(r).forEach(function(t) {
     if (Hr.indexOf(t) === -1)
-      throw new R('Unknown option "' + t + '" is met in definition of "' + e + '" YAML type.');
+      throw new T('Unknown option "' + t + '" is met in definition of "' + e + '" YAML type.');
   }), this.options = r, this.tag = e, this.kind = r.kind || null, this.resolve = r.resolve || function() {
     return !0;
   }, this.construct = r.construct || function(t) {
     return t;
   }, this.instanceOf = r.instanceOf || null, this.predicate = r.predicate || null, this.represent = r.represent || null, this.representName = r.representName || null, this.defaultStyle = r.defaultStyle || null, this.multi = r.multi || !1, this.styleAliases = jr(r.styleAliases || null), Br.indexOf(this.kind) === -1)
-    throw new R('Unknown kind "' + this.kind + '" is specified for "' + e + '" YAML type.');
+    throw new T('Unknown kind "' + this.kind + '" is specified for "' + e + '" YAML type.');
 }
 var E = $r;
 function nt(e, r) {
@@ -3120,17 +3120,17 @@ ze.prototype.extend = function(r) {
   else if (r && (Array.isArray(r.implicit) || Array.isArray(r.explicit)))
     r.implicit && (t = t.concat(r.implicit)), r.explicit && (i = i.concat(r.explicit));
   else
-    throw new R("Schema.extend argument should be a Type, [ Type ], or a schema definition ({ implicit: [...], explicit: [...] })");
+    throw new T("Schema.extend argument should be a Type, [ Type ], or a schema definition ({ implicit: [...], explicit: [...] })");
   t.forEach(function(o) {
     if (!(o instanceof E))
-      throw new R("Specified list of YAML types (or a single Type object) contains a non-Type object.");
+      throw new T("Specified list of YAML types (or a single Type object) contains a non-Type object.");
     if (o.loadKind && o.loadKind !== "scalar")
-      throw new R("There is a non-scalar type in the implicit list of a schema. Implicit resolving of such types is not supported.");
+      throw new T("There is a non-scalar type in the implicit list of a schema. Implicit resolving of such types is not supported.");
     if (o.multi)
-      throw new R("There is a multi type in the implicit list of a schema. Multi tags can only be listed as explicit.");
+      throw new T("There is a multi type in the implicit list of a schema. Multi tags can only be listed as explicit.");
   }), i.forEach(function(o) {
     if (!(o instanceof E))
-      throw new R("Specified list of YAML types (or a single Type object) contains a non-Type object.");
+      throw new T("Specified list of YAML types (or a single Type object) contains a non-Type object.");
   });
   var n = Object.create(ze.prototype);
   return n.implicit = (this.implicit || []).concat(t), n.explicit = (this.explicit || []).concat(i), n.compiledImplicit = nt(n, "implicit"), n.compiledExplicit = nt(n, "explicit"), n.compiledTypeMap = zr(n.compiledImplicit, n.compiledExplicit), n;
@@ -3524,7 +3524,7 @@ function D(e) {
 function ne(e) {
   return e === 9 || e === 32;
 }
-function T(e) {
+function N(e) {
   return e === 9 || e === 32 || e === 10 || e === 13;
 }
 function ae(e) {
@@ -3565,7 +3565,7 @@ function Mt(e, r) {
     line: e.line,
     column: e.position - e.lineStart
   };
-  return t.snippet = Vr(t), new R(r, t);
+  return t.snippet = Vr(t), new T(r, t);
 }
 function m(e, r) {
   throw Mt(e, r);
@@ -3646,7 +3646,7 @@ function S(e, r, t) {
 }
 function Ve(e) {
   var r = e.position, t;
-  return t = e.input.charCodeAt(r), !!((t === 45 || t === 46) && t === e.input.charCodeAt(r + 1) && t === e.input.charCodeAt(r + 2) && (r += 3, t = e.input.charCodeAt(r), t === 0 || T(t)));
+  return t = e.input.charCodeAt(r), !!((t === 45 || t === 46) && t === e.input.charCodeAt(r + 1) && t === e.input.charCodeAt(r + 2) && (r += 3, t = e.input.charCodeAt(r), t === 0 || N(t)));
 }
 function Xe(e, r) {
   r === 1 ? e.result += " " : r > 1 && (e.result += A.repeat(`
@@ -3654,14 +3654,14 @@ function Xe(e, r) {
 }
 function Zi(e, r, t) {
   var i, n, o, s, a, l, c, d, p = e.kind, h = e.result, f;
-  if (f = e.input.charCodeAt(e.position), T(f) || ae(f) || f === 35 || f === 38 || f === 42 || f === 33 || f === 124 || f === 62 || f === 39 || f === 34 || f === 37 || f === 64 || f === 96 || (f === 63 || f === 45) && (n = e.input.charCodeAt(e.position + 1), T(n) || t && ae(n)))
+  if (f = e.input.charCodeAt(e.position), N(f) || ae(f) || f === 35 || f === 38 || f === 42 || f === 33 || f === 124 || f === 62 || f === 39 || f === 34 || f === 37 || f === 64 || f === 96 || (f === 63 || f === 45) && (n = e.input.charCodeAt(e.position + 1), N(n) || t && ae(n)))
     return !1;
   for (e.kind = "scalar", e.result = "", o = s = e.position, a = !1; f !== 0; ) {
     if (f === 58) {
-      if (n = e.input.charCodeAt(e.position + 1), T(n) || t && ae(n))
+      if (n = e.input.charCodeAt(e.position + 1), N(n) || t && ae(n))
         break;
     } else if (f === 35) {
-      if (i = e.input.charCodeAt(e.position - 1), T(i))
+      if (i = e.input.charCodeAt(e.position - 1), N(i))
         break;
     } else {
       if (e.position === e.lineStart && Ve(e) || t && ae(f))
@@ -3726,7 +3726,7 @@ function rn(e, r) {
   for (e.anchor !== null && (e.anchorMap[e.anchor] = a), w = e.input.charCodeAt(++e.position); w !== 0; ) {
     if (S(e, !0, r), w = e.input.charCodeAt(e.position), w === d)
       return e.position++, e.tag = s, e.anchor = l, e.kind = f ? "mapping" : "sequence", e.result = a, !0;
-    t ? w === 44 && m(e, "expected the node content, but found ','") : m(e, "missed comma between flow collection entries"), y = v = O = null, p = h = !1, w === 63 && (c = e.input.charCodeAt(e.position + 1), T(c) && (p = h = !0, e.position++, S(e, !0, r))), i = e.line, n = e.lineStart, o = e.position, me(e, r, Ne, !1, !0), y = e.tag, v = e.result, S(e, !0, r), w = e.input.charCodeAt(e.position), (h || e.line === i) && w === 58 && (p = !0, w = e.input.charCodeAt(++e.position), S(e, !0, r), me(e, r, Ne, !1, !0), O = e.result), f ? le(e, a, b, y, v, O, i, n, o) : p ? a.push(le(e, null, b, y, v, O, i, n, o)) : a.push(v), S(e, !0, r), w = e.input.charCodeAt(e.position), w === 44 ? (t = !0, w = e.input.charCodeAt(++e.position)) : t = !1;
+    t ? w === 44 && m(e, "expected the node content, but found ','") : m(e, "missed comma between flow collection entries"), y = v = O = null, p = h = !1, w === 63 && (c = e.input.charCodeAt(e.position + 1), N(c) && (p = h = !0, e.position++, S(e, !0, r))), i = e.line, n = e.lineStart, o = e.position, me(e, r, Ne, !1, !0), y = e.tag, v = e.result, S(e, !0, r), w = e.input.charCodeAt(e.position), (h || e.line === i) && w === 58 && (p = !0, w = e.input.charCodeAt(++e.position), S(e, !0, r), me(e, r, Ne, !1, !0), O = e.result), f ? le(e, a, b, y, v, O, i, n, o) : p ? a.push(le(e, null, b, y, v, O, i, n, o)) : a.push(v), S(e, !0, r), w = e.input.charCodeAt(e.position), w === 44 ? (t = !0, w = e.input.charCodeAt(++e.position)) : t = !1;
   }
   m(e, "unexpected end of the stream within a flow collection");
 }
@@ -3780,7 +3780,7 @@ function nn(e, r) {
 function ut(e, r) {
   var t, i = e.tag, n = e.anchor, o = [], s, a = !1, l;
   if (e.firstTabInLine !== -1) return !1;
-  for (e.anchor !== null && (e.anchorMap[e.anchor] = o), l = e.input.charCodeAt(e.position); l !== 0 && (e.firstTabInLine !== -1 && (e.position = e.firstTabInLine, m(e, "tab characters must not be used in indentation")), !(l !== 45 || (s = e.input.charCodeAt(e.position + 1), !T(s)))); ) {
+  for (e.anchor !== null && (e.anchorMap[e.anchor] = o), l = e.input.charCodeAt(e.position); l !== 0 && (e.firstTabInLine !== -1 && (e.position = e.firstTabInLine, m(e, "tab characters must not be used in indentation")), !(l !== 45 || (s = e.input.charCodeAt(e.position + 1), !N(s)))); ) {
     if (a = !0, e.position++, S(e, !0, -1) && e.lineIndent <= r) {
       o.push(null), l = e.input.charCodeAt(e.position);
       continue;
@@ -3796,7 +3796,7 @@ function on(e, r, t) {
   var i, n, o, s, a, l, c = e.tag, d = e.anchor, p = {}, h = /* @__PURE__ */ Object.create(null), f = null, b = null, v = null, y = !1, O = !1, w;
   if (e.firstTabInLine !== -1) return !1;
   for (e.anchor !== null && (e.anchorMap[e.anchor] = p), w = e.input.charCodeAt(e.position); w !== 0; ) {
-    if (!y && e.firstTabInLine !== -1 && (e.position = e.firstTabInLine, m(e, "tab characters must not be used in indentation")), i = e.input.charCodeAt(e.position + 1), o = e.line, (w === 63 || w === 58) && T(i))
+    if (!y && e.firstTabInLine !== -1 && (e.position = e.firstTabInLine, m(e, "tab characters must not be used in indentation")), i = e.input.charCodeAt(e.position + 1), o = e.line, (w === 63 || w === 58) && N(i))
       w === 63 ? (y && (le(e, p, h, f, b, null, s, a, l), f = b = v = null), O = !0, y = !0, n = !0) : y ? (y = !1, n = !0) : m(e, "incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line"), e.position += 1, w = i;
     else {
       if (s = e.line, a = e.lineStart, l = e.position, !me(e, t, Rt, !1, !0))
@@ -3805,7 +3805,7 @@ function on(e, r, t) {
         for (w = e.input.charCodeAt(e.position); ne(w); )
           w = e.input.charCodeAt(++e.position);
         if (w === 58)
-          w = e.input.charCodeAt(++e.position), T(w) || m(e, "a whitespace character is expected after the key-value separator within a block mapping"), y && (le(e, p, h, f, b, null, s, a, l), f = b = v = null), O = !0, y = !1, n = !1, f = e.tag, b = e.result;
+          w = e.input.charCodeAt(++e.position), N(w) || m(e, "a whitespace character is expected after the key-value separator within a block mapping"), y && (le(e, p, h, f, b, null, s, a, l), f = b = v = null), O = !0, y = !1, n = !1, f = e.tag, b = e.result;
         else if (O)
           m(e, "can not read an implicit mapping pair; a colon is missed");
         else
@@ -3831,7 +3831,7 @@ function sn(e) {
     while (s !== 0 && s !== 62);
     e.position < e.length ? (o = e.input.slice(r, e.position), s = e.input.charCodeAt(++e.position)) : m(e, "unexpected end of the stream within a verbatim tag");
   } else {
-    for (; s !== 0 && !T(s); )
+    for (; s !== 0 && !N(s); )
       s === 33 && (i ? m(e, "tag suffix cannot contain exclamation marks") : (n = e.input.slice(r - 1, e.position + 1), Nt.test(n) || m(e, "named tag handle cannot contain such characters"), i = !0, r = e.position + 1)), s = e.input.charCodeAt(++e.position);
     o = e.input.slice(r, e.position), Wi.test(o) && m(e, "tag suffix cannot contain flow indicator characters");
   }
@@ -3846,14 +3846,14 @@ function sn(e) {
 function an(e) {
   var r, t;
   if (t = e.input.charCodeAt(e.position), t !== 38) return !1;
-  for (e.anchor !== null && m(e, "duplication of an anchor property"), t = e.input.charCodeAt(++e.position), r = e.position; t !== 0 && !T(t) && !ae(t); )
+  for (e.anchor !== null && m(e, "duplication of an anchor property"), t = e.input.charCodeAt(++e.position), r = e.position; t !== 0 && !N(t) && !ae(t); )
     t = e.input.charCodeAt(++e.position);
   return e.position === r && m(e, "name of an anchor node must contain at least one character"), e.anchor = e.input.slice(r, e.position), !0;
 }
 function ln(e) {
   var r, t, i;
   if (i = e.input.charCodeAt(e.position), i !== 42) return !1;
-  for (i = e.input.charCodeAt(++e.position), r = e.position; i !== 0 && !T(i) && !ae(i); )
+  for (i = e.input.charCodeAt(++e.position), r = e.position; i !== 0 && !N(i) && !ae(i); )
     i = e.input.charCodeAt(++e.position);
   return e.position === r && m(e, "name of an alias node must contain at least one character"), t = e.input.slice(r, e.position), q.call(e.anchorMap, t) || m(e, 'unidentified alias "' + t + '"'), e.result = e.anchorMap[t], S(e, !0, -1), !0;
 }
@@ -3886,7 +3886,7 @@ function me(e, r, t, i, n) {
 function cn(e) {
   var r = e.position, t, i, n, o = !1, s;
   for (e.version = null, e.checkLineBreaks = e.legacy, e.tagMap = /* @__PURE__ */ Object.create(null), e.anchorMap = /* @__PURE__ */ Object.create(null); (s = e.input.charCodeAt(e.position)) !== 0 && (S(e, !0, -1), s = e.input.charCodeAt(e.position), !(e.lineIndent > 0 || s !== 37)); ) {
-    for (o = !0, s = e.input.charCodeAt(++e.position), t = e.position; s !== 0 && !T(s); )
+    for (o = !0, s = e.input.charCodeAt(++e.position), t = e.position; s !== 0 && !N(s); )
       s = e.input.charCodeAt(++e.position);
     for (i = e.input.slice(t, e.position), n = [], i.length < 1 && m(e, "directive name must not be less than one character in length"); s !== 0; ) {
       for (; ne(s); )
@@ -3898,7 +3898,7 @@ function cn(e) {
         break;
       }
       if (D(s)) break;
-      for (t = e.position; s !== 0 && !T(s); )
+      for (t = e.position; s !== 0 && !N(s); )
         s = e.input.charCodeAt(++e.position);
       n.push(e.input.slice(t, e.position));
     }
@@ -3928,7 +3928,7 @@ function pn(e, r) {
   if (t.length !== 0) {
     if (t.length === 1)
       return t[0];
-    throw new R("expected a single document in the stream, but found more");
+    throw new T("expected a single document in the stream, but found more");
   }
 }
 var dn = pn, hn = {
@@ -3983,7 +3983,7 @@ function In(e) {
   else if (e <= 4294967295)
     t = "U", i = 8;
   else
-    throw new R("code point within a string may not be greater than 0xFFFFFFFF");
+    throw new T("code point within a string may not be greater than 0xFFFFFFFF");
   return "\\" + t + A.repeat("0", i - r.length) + r;
 }
 var Fn = 1, xe = 2;
@@ -4094,7 +4094,7 @@ function Hn(e, r, t, i, n) {
       case se:
         return '"' + jn(r) + '"';
       default:
-        throw new R("impossible error: invalid scalar style");
+        throw new T("impossible error: invalid scalar style");
     }
   }();
 }
@@ -4140,19 +4140,19 @@ function jn(e) {
 function $n(e, r, t) {
   var i = "", n = e.tag, o, s, a;
   for (o = 0, s = t.length; o < s; o += 1)
-    a = t[o], e.replacer && (a = e.replacer.call(t, String(o), a)), (H(e, r, a, !1, !1) || typeof a > "u" && H(e, r, null, !1, !1)) && (i !== "" && (i += "," + (e.condenseFlow ? "" : " ")), i += e.dump);
+    a = t[o], e.replacer && (a = e.replacer.call(t, String(o), a)), (B(e, r, a, !1, !1) || typeof a > "u" && B(e, r, null, !1, !1)) && (i !== "" && (i += "," + (e.condenseFlow ? "" : " ")), i += e.dump);
   e.tag = n, e.dump = "[" + i + "]";
 }
 function bt(e, r, t, i) {
   var n = "", o = e.tag, s, a, l;
   for (s = 0, a = t.length; s < a; s += 1)
-    l = t[s], e.replacer && (l = e.replacer.call(t, String(s), l)), (H(e, r + 1, l, !0, !0, !1, !0) || typeof l > "u" && H(e, r + 1, null, !0, !0, !1, !0)) && ((!i || n !== "") && (n += qe(e, r)), e.dump && ve === e.dump.charCodeAt(0) ? n += "-" : n += "- ", n += e.dump);
+    l = t[s], e.replacer && (l = e.replacer.call(t, String(s), l)), (B(e, r + 1, l, !0, !0, !1, !0) || typeof l > "u" && B(e, r + 1, null, !0, !0, !1, !0)) && ((!i || n !== "") && (n += qe(e, r)), e.dump && ve === e.dump.charCodeAt(0) ? n += "-" : n += "- ", n += e.dump);
   e.tag = o, e.dump = n || "[]";
 }
 function zn(e, r, t) {
   var i = "", n = e.tag, o = Object.keys(t), s, a, l, c, d;
   for (s = 0, a = o.length; s < a; s += 1)
-    d = "", i !== "" && (d += ", "), e.condenseFlow && (d += '"'), l = o[s], c = t[l], e.replacer && (c = e.replacer.call(t, l, c)), H(e, r, l, !1, !1) && (e.dump.length > 1024 && (d += "? "), d += e.dump + (e.condenseFlow ? '"' : "") + ":" + (e.condenseFlow ? "" : " "), H(e, r, c, !1, !1) && (d += e.dump, i += d));
+    d = "", i !== "" && (d += ", "), e.condenseFlow && (d += '"'), l = o[s], c = t[l], e.replacer && (c = e.replacer.call(t, l, c)), B(e, r, l, !1, !1) && (e.dump.length > 1024 && (d += "? "), d += e.dump + (e.condenseFlow ? '"' : "") + ":" + (e.condenseFlow ? "" : " "), B(e, r, c, !1, !1) && (d += e.dump, i += d));
   e.tag = n, e.dump = "{" + i + "}";
 }
 function Yn(e, r, t, i) {
@@ -4162,9 +4162,9 @@ function Yn(e, r, t, i) {
   else if (typeof e.sortKeys == "function")
     s.sort(e.sortKeys);
   else if (e.sortKeys)
-    throw new R("sortKeys must be a boolean or a function");
+    throw new T("sortKeys must be a boolean or a function");
   for (a = 0, l = s.length; a < l; a += 1)
-    h = "", (!i || n !== "") && (h += qe(e, r)), c = s[a], d = t[c], e.replacer && (d = e.replacer.call(t, c, d)), H(e, r + 1, c, !0, !0, !0) && (p = e.tag !== null && e.tag !== "?" || e.dump && e.dump.length > 1024, p && (e.dump && ve === e.dump.charCodeAt(0) ? h += "?" : h += "? "), h += e.dump, p && (h += qe(e, r)), H(e, r + 1, d, !0, p) && (e.dump && ve === e.dump.charCodeAt(0) ? h += ":" : h += ": ", h += e.dump, n += h));
+    h = "", (!i || n !== "") && (h += qe(e, r)), c = s[a], d = t[c], e.replacer && (d = e.replacer.call(t, c, d)), B(e, r + 1, c, !0, !0, !0) && (p = e.tag !== null && e.tag !== "?" || e.dump && e.dump.length > 1024, p && (e.dump && ve === e.dump.charCodeAt(0) ? h += "?" : h += "? "), h += e.dump, p && (h += qe(e, r)), B(e, r + 1, d, !0, p) && (e.dump && ve === e.dump.charCodeAt(0) ? h += ":" : h += ": ", h += e.dump, n += h));
   e.tag = o, e.dump = n || "{}";
 }
 function vt(e, r, t) {
@@ -4177,14 +4177,14 @@ function vt(e, r, t) {
         else if (Dt.call(a.represent, l))
           i = a.represent[l](r, l);
         else
-          throw new R("!<" + a.tag + '> tag resolver accepts not "' + l + '" style');
+          throw new T("!<" + a.tag + '> tag resolver accepts not "' + l + '" style');
         e.dump = i;
       }
       return !0;
     }
   return !1;
 }
-function H(e, r, t, i, n, o, s) {
+function B(e, r, t, i, n, o, s) {
   e.tag = null, e.dump = t, vt(e, t, !1) || vt(e, t, !0);
   var a = Ut.call(e.dump), l = i, c;
   i && (i = e.flowLevel < 0 || e.flowLevel > r);
@@ -4202,7 +4202,7 @@ function H(e, r, t, i, n, o, s) {
       if (a === "[object Undefined]")
         return !1;
       if (e.skipInvalid) return !1;
-      throw new R("unacceptable kind of an object to dump " + a);
+      throw new T("unacceptable kind of an object to dump " + a);
     }
     e.tag !== null && e.tag !== "?" && (c = encodeURI(
       e.tag[0] === "!" ? e.tag.slice(1) : e.tag
@@ -4233,7 +4233,7 @@ function Wn(e, r) {
   var t = new Pn(r);
   t.noRefs || qn(e, t);
   var i = e;
-  return t.replacer && (i = t.replacer.call({ "": i }, "", i)), H(t, 0, i, !0, !0) ? t.dump + `
+  return t.replacer && (i = t.replacer.call({ "": i }, "", i)), B(t, 0, i, !0, !0) ? t.dump + `
 ` : "";
 }
 var Gn = Wn, Kn = {
@@ -4442,14 +4442,14 @@ class Oe {
 }
 ye = new WeakMap(), Ce = new WeakMap(), _e = new WeakMap(), Ue = new WeakMap();
 var W, G;
-const N = class N {
+const I = class I {
   /**
    * @description 获取备注
    * @param {string} name
    * @returns {[string, string]} [origin, confuse]
    */
   static getPs(r) {
-    const t = r.split(u(N, W));
+    const t = r.split(u(I, W));
     return [t[0], t[1]];
   }
   /**
@@ -4459,7 +4459,7 @@ const N = class N {
    * @returns {string} origin^LINK_TO^confuse
    */
   static setPs(r, t) {
-    return [r, t].join(u(N, W));
+    return [r, t].join(u(I, W));
   }
   /**
    * @description 获取前缀（带缓存）
@@ -4467,13 +4467,13 @@ const N = class N {
    * @returns {string|null} prefix
    */
   static getPrefix(r) {
-    if (!(r != null && r.includes(u(N, W)))) return null;
-    if (u(N, G).has(r))
-      return u(N, G).get(r);
-    const [t] = N.getPs(r);
+    if (!(r != null && r.includes(u(I, W)))) return null;
+    if (u(I, G).has(r))
+      return u(I, G).get(r);
+    const [t] = I.getPs(r);
     if (t) {
       const i = t.trim();
-      return u(N, G).set(r, i), i;
+      return u(I, G).set(r, i), i;
     }
     return null;
   }
@@ -4485,9 +4485,9 @@ const N = class N {
     u(this, G).clear();
   }
 };
-W = new WeakMap(), G = new WeakMap(), x(N, W, "^LINK_TO^"), x(N, G, /* @__PURE__ */ new Map());
-let L = N;
-var K, Se, B, I, J, ce;
+W = new WeakMap(), G = new WeakMap(), x(I, W, "^LINK_TO^"), x(I, G, /* @__PURE__ */ new Map());
+let L = I;
+var K, Se, j, F, J, ce;
 class Jt extends Oe {
   constructor(t) {
     super();
@@ -4496,9 +4496,9 @@ class Jt extends Oe {
     /** * @description 混淆链接 */
     x(this, Se, "");
     /** * @description vps原始配置 */
-    x(this, B, {});
+    x(this, j, {});
     /** * @description 混淆配置 */
-    x(this, I, {});
+    x(this, F, {});
     /** * @description 原始备注 */
     x(this, J, "");
     /** * @description 混淆备注 */
@@ -4510,21 +4510,21 @@ class Jt extends Oe {
    * @param {string} v
    */
   setOriginConfig(t) {
-    g(this, K, t), g(this, B, new URL(t)), g(this, J, u(this, B).hash ?? "");
+    g(this, K, t), g(this, j, new URL(t)), g(this, J, u(this, j).hash ?? "");
   }
   /**
    * @description 更新原始配置
    * @param {string} ps
    */
   updateOriginConfig(t) {
-    u(this, B).hash = t, g(this, J, t), g(this, K, u(this, B).href), this.setConfuseConfig(u(this, K));
+    u(this, j).hash = t, g(this, J, t), g(this, K, u(this, j).href), this.setConfuseConfig(u(this, K));
   }
   /**
    * @description 设置混淆配置
    * @param {string} v
    */
   setConfuseConfig(t) {
-    g(this, I, new URL(t)), u(this, I).username = this.getUsername(), u(this, I).host = this.getHost(), u(this, I).hostname = this.getHostName(), u(this, I).port = this.getPort(), u(this, I).hash = L.setPs(u(this, J), u(this, ce)), g(this, Se, u(this, I).href);
+    g(this, F, new URL(t)), u(this, F).username = this.getUsername(), u(this, F).host = this.getHost(), u(this, F).hostname = this.getHostName(), u(this, F).port = this.getPort(), u(this, F).hash = L.setPs(u(this, J), u(this, ce)), g(this, Se, u(this, F).href);
   }
   restoreClash(t, i) {
     var n;
@@ -4552,7 +4552,7 @@ class Jt extends Oe {
    * @description 原始配置
    */
   get originConfig() {
-    return u(this, B);
+    return u(this, j);
   }
   /**
    * @description 混淆备注
@@ -4572,11 +4572,11 @@ class Jt extends Oe {
    * @description 混淆配置
    */
   get confuseConfig() {
-    return u(this, I);
+    return u(this, F);
   }
 }
-K = new WeakMap(), Se = new WeakMap(), B = new WeakMap(), I = new WeakMap(), J = new WeakMap(), ce = new WeakMap();
-var Q, Ae, j, F, X, ue;
+K = new WeakMap(), Se = new WeakMap(), j = new WeakMap(), F = new WeakMap(), J = new WeakMap(), ce = new WeakMap();
+var Q, Ae, V, R, X, ue;
 class Qt extends Oe {
   constructor(t) {
     super();
@@ -4585,9 +4585,9 @@ class Qt extends Oe {
     /** * @description 混淆链接 */
     x(this, Ae, "");
     /** * @description vps原始配置 */
-    x(this, j, {});
+    x(this, V, {});
     /** * @description 混淆配置 */
-    x(this, F, {});
+    x(this, R, {});
     /** * @description 原始备注 */
     x(this, X, "");
     /** * @description 混淆备注 */
@@ -4599,21 +4599,21 @@ class Qt extends Oe {
    * @param {string} v
    */
   setOriginConfig(t) {
-    g(this, Q, t), g(this, j, new URL(t)), g(this, X, u(this, j).hash ?? "");
+    g(this, Q, t), g(this, V, new URL(t)), g(this, X, u(this, V).hash ?? "");
   }
   /**
    * @description 更新原始配置
    * @param {string} ps
    */
   updateOriginConfig(t) {
-    u(this, j).hash = t, g(this, X, t), g(this, Q, u(this, j).href), this.setConfuseConfig(u(this, Q));
+    u(this, V).hash = t, g(this, X, t), g(this, Q, u(this, V).href), this.setConfuseConfig(u(this, Q));
   }
   /**
    * @description 设置混淆配置
    * @param {string} v
    */
   setConfuseConfig(t) {
-    g(this, F, new URL(t)), u(this, F).username = this.getUsername(), u(this, F).host = this.getHost(), u(this, F).hostname = this.getHostName(), u(this, F).port = this.getPort(), u(this, F).hash = L.setPs(u(this, X), u(this, ue)), g(this, Ae, u(this, F).href);
+    g(this, R, new URL(t)), u(this, R).username = this.getUsername(), u(this, R).host = this.getHost(), u(this, R).hostname = this.getHostName(), u(this, R).port = this.getPort(), u(this, R).hash = L.setPs(u(this, X), u(this, ue)), g(this, Ae, `ss://${u(this, V).username}@${u(this, R).host}:${u(this, R).port}${u(this, R).search}#${u(this, R).hash}`);
   }
   restoreClash(t, i) {
     var n;
@@ -4640,7 +4640,7 @@ class Qt extends Oe {
    * @description 原始配置
    */
   get originConfig() {
-    return u(this, j);
+    return u(this, V);
   }
   /**
    * @description 混淆备注
@@ -4660,10 +4660,10 @@ class Qt extends Oe {
    * @description 混淆配置
    */
   get confuseConfig() {
-    return u(this, F);
+    return u(this, R);
   }
 }
-Q = new WeakMap(), Ae = new WeakMap(), j = new WeakMap(), F = new WeakMap(), X = new WeakMap(), ue = new WeakMap();
+Q = new WeakMap(), Ae = new WeakMap(), V = new WeakMap(), R = new WeakMap(), X = new WeakMap(), ue = new WeakMap();
 var Z, Ee, $, P, ee, pe;
 class Xt extends Oe {
   constructor(t) {
@@ -4842,7 +4842,7 @@ class Zt extends Oe {
   }
 }
 te = new WeakMap(), ke = new WeakMap(), z = new WeakMap(), M = new WeakMap(), re = new WeakMap(), de = new WeakMap();
-var he, Le, V, U, ie, fe, De, tr;
+var he, Le, H, U, ie, fe, De, tr;
 class er extends Oe {
   constructor(t) {
     super();
@@ -4852,7 +4852,7 @@ class er extends Oe {
     /** * @description 混淆链接 */
     x(this, Le, "");
     /** * @description vps原始配置 */
-    x(this, V, {});
+    x(this, H, {});
     /** * @description 混淆配置 */
     x(this, U, {});
     /** * @description 原始备注 */
@@ -4867,20 +4867,20 @@ class er extends Oe {
    */
   setOriginConfig(t) {
     const [i, n] = t.match(/vmess:\/\/(.*)/) || [];
-    g(this, he, t), g(this, V, JSON.parse(Kt(n))), g(this, ie, u(this, V).ps ?? "");
+    g(this, he, t), g(this, H, JSON.parse(Kt(n))), g(this, ie, u(this, H).ps ?? "");
   }
   /**
    * @description 更新原始配置
    * @param {string} ps
    */
   updateOriginConfig(t) {
-    u(this, V).ps = t, g(this, ie, t), g(this, he, `vmess://${Ke(JSON.stringify(u(this, V)))}`), this.setConfuseConfig();
+    u(this, H).ps = t, g(this, ie, t), g(this, he, `vmess://${Ke(JSON.stringify(u(this, H)))}`), this.setConfuseConfig();
   }
   /**
    * @description 设置混淆配置
    */
   setConfuseConfig() {
-    g(this, U, structuredClone(u(this, V))), u(this, U).add = this.getHostName(), u(this, U).port = this.getPort(), u(this, U).id = this.getPassword(), u(this, U).ps = L.setPs(u(this, ie), u(this, fe)), g(this, Le, `vmess://${Ke(JSON.stringify(u(this, U)))}`);
+    g(this, U, structuredClone(u(this, H))), u(this, U).add = this.getHostName(), u(this, U).port = this.getPort(), u(this, U).id = this.getPassword(), u(this, U).ps = L.setPs(u(this, ie), u(this, fe)), g(this, Le, `vmess://${Ke(JSON.stringify(u(this, U)))}`);
   }
   restoreClash(t, i) {
     var n, o;
@@ -4908,7 +4908,7 @@ class er extends Oe {
    * @description 原始配置
    */
   get originConfig() {
-    return u(this, V);
+    return u(this, H);
   }
   /**
    * @description 混淆备注
@@ -4931,7 +4931,7 @@ class er extends Oe {
     return u(this, U);
   }
 }
-he = new WeakMap(), Le = new WeakMap(), V = new WeakMap(), U = new WeakMap(), ie = new WeakMap(), fe = new WeakMap(), De = new WeakSet(), tr = function(t) {
+he = new WeakMap(), Le = new WeakMap(), H = new WeakMap(), U = new WeakMap(), ie = new WeakMap(), fe = new WeakMap(), De = new WeakSet(), tr = function(t) {
   t.network === "ws" && (t["ws-opts"] = {
     ...t["ws-opts"],
     path: this.originConfig.path,
