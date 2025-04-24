@@ -4616,7 +4616,7 @@ class Qt extends Oe {
    * @param {string} v
    */
   setConfuseConfig(t) {
-    g(this, R, new URL(t)), u(this, R).username = this.getUsername(), u(this, R).host = this.getHost(), u(this, R).hostname = this.getHostName(), u(this, R).port = this.getPort(), u(this, R).hash = _.setPs(u(this, X), u(this, ue)), g(this, Ae, `ss://${u(this, V).username}@${u(this, R).host}:${u(this, R).port}${u(this, R).search}#${u(this, R).hash}`);
+    g(this, R, new URL(t)), u(this, R).username = this.getUsername(), u(this, R).host = this.getHost(), u(this, R).hostname = this.getHostName(), u(this, R).port = this.getPort(), u(this, R).hash = _.setPs(u(this, X), u(this, ue)), g(this, Ae, `ss://${decodeURIComponent(u(this, V).username)}@${u(this, R).host}:${u(this, R).port}${u(this, R).search}#${u(this, R).hash}`);
   }
   restoreClash(t, i) {
     var n;
