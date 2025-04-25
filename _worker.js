@@ -5172,7 +5172,7 @@ class nr extends io {
           if (l.length) {
             this.updateExist(Array.from(this.originUrls));
             const c = po(l);
-            console.log("vps", c), await this.parse(c.filter(Boolean));
+            await this.parse(c.filter(Boolean));
           }
         }
       }
