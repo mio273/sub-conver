@@ -79,12 +79,14 @@ export class Hysteria2Parser extends Faker {
                 proxy.down !== ''
                     ? proxy.down
                     : (this.originConfig.searchParams?.get('down') ?? this.originConfig.searchParams?.get('downmbps') ?? 0);
+            proxy.down = decodeURIComponent(proxy.down as string);
         }
         if (hasKey(proxy, 'up')) {
             proxy.up =
                 proxy.up !== ''
                     ? proxy.up
                     : (this.originConfig.searchParams?.get('up') ?? this.originConfig.searchParams?.get('upmbps') ?? 0);
+            proxy.up = decodeURIComponent(proxy.up as string);
         }
         if (hasKey(proxy, 'delay')) {
             proxy.delay = this.originConfig.searchParams?.get('delay') ?? 0;
