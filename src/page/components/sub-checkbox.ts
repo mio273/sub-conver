@@ -92,6 +92,7 @@ export function SubCheckbox(): string {
                     .sub-checkbox__label {
                         font-size: 14px;
                         line-height: 14px;
+                        white-space: nowrap
                     }
 
                     .sub-checkbox:hover .sub-checkbox__input:not(.sub-checkbox__input_disabled) {

@@ -119,7 +119,7 @@ export function showPage(request: Request, env: Env): Response {
                             </sub-form-item>
 
                             <sub-form-item label="高级选项">
-                                <sub-checkbox key="advanced" span="5"></sub-checkbox>
+                                <sub-checkbox key="advanced" span="7"></sub-checkbox>
                             </sub-form-item>
 
                             <sub-form-item label="短链地址">
@@ -224,7 +224,7 @@ export function showPage(request: Request, env: Env): Response {
                             config: '${remoteConfig[0].value}',
                             backend: '${defaultBackend}',
                             protocol: '${JSON.stringify(protocolConfig.map(item => item.value))}',
-                            advanced: ['emoji', 'new_name'],
+                            advanced: ['emoji', 'new_name','scv'],
                             shortServe: '${shortServeConfig[0]?.value ?? ''}',
 
                             subUrl: '',
@@ -292,11 +292,9 @@ export function showPage(request: Request, env: Env): Response {
                                 const url = new URL(this.#model.backend + '/sub');
                                 url.searchParams.set('target', this.#model.target);
                                 url.searchParams.set('url', this.#model.url);
-                                url.searchParams.set('insert', 'false');
+                                url.searchParams.set('insert', 'true');
                                 url.searchParams.set('config', this.#model.config);
-                                url.searchParams.set('list', false);
-                                url.searchParams.set('scv', false);
-                                url.searchParams.set('fdn', false);
+                                url.searchParams.set('list', 'true');
                                 url.searchParams.set('protocol', Array.isArray(this.#model.protocol) ? JSON.stringify(this.#model.protocol) : this.#model.protocol);
                                 
                                 const advancedOptions = this.#getAdvancedOptions(this.#model);

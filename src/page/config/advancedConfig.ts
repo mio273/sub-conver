@@ -2,8 +2,11 @@ export function getAdvancedConfig(): { label: string; value: string }[] {
     return [
         { label: 'Emoji', value: 'emoji' },
         { label: 'Clash New Field', value: 'new_name' },
-        { label: '启用 UDP', value: 'udp' },
+        { label: 'UDP', value: 'udp' },
         { label: '排序节点', value: 'sort' },
-        { label: '启用TFO', value: 'tfo' }
+        { label: 'TFO', value: 'tfo' },
+        { label: '关闭证书检查', value: 'scv' },
+        { label: '节点类型', value: 'append_type' }
     ];
 }
+
